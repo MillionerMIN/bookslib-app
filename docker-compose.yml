@@ -1,0 +1,19 @@
+version: 'v2.31.0-desktop.2'
+
+services:
+  bookstallDB:
+    container_name: bookstall_db
+    image: postgres:latest
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - ${DATABASE_PORT}:5432
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+    volumes:
+      - bookstallDB_data:/var/lib/postgresql/data
+volumes:
+  bookstallDB_data:
