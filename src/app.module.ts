@@ -1,10 +1,12 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import configuration, {
   ConfigurationType,
 } from './core/config/configurationType';
+
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { BooksModule } from './modules/books/books.module';
+import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './modules/users/users.module';
 
@@ -39,6 +41,7 @@ import { UsersModule } from './modules/users/users.module';
       },
     }),
     UsersModule,
+    BooksModule,
   ],
   controllers: [AppController],
   providers: [AppService],
